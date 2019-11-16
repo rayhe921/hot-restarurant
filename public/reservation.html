@@ -18,9 +18,9 @@
     <div class="container">
         <div class="jumbotron">
             <h1>Hot Restaurant</h1>
-            <a href="./table.html"><button class="btn btn-danger btn-lg"><span class="fa fa-plus"></span> View
+            <a href="table"><button class="btn btn-danger btn-lg"><span class="fa fa-plus"></span> View
                     Table</button></a>
-            <a href="./home.html"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span>
+            <a href="home"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span>
                     Home</button></a>
         </div>
         <div>
@@ -87,7 +87,7 @@
                 var currentURL = window.location.origin;
                 console.log("i'm here")
 
-                $.post(currentURL + "../server.js", newReservation,
+                $.post("/api/waitlist", newReservation,
                     function (data) {
 
                         // If a table is available... tell user they are booked.
