@@ -45,25 +45,25 @@ var tableCount = [
 // =============================================================
 var waitCount = [
   {
-    name: "ray",
+    name: "ra2",
     phoneNumber: "098-098-2093",
     email: "ray@ray.com",
     id: "1234"
   },
   {
-    name: "dima",
+    name: "dima2",
     phoneNumber: "098-098-2093",
     email: "dima@dima.com",
     id: "1254"
   },
   {
-    name: "gloria",
+    name: "gloria2",
     phoneNumber: "098-098-2093",
     email: "ray@asdfy.com",
     id: "asdf"
   },
   {
-    name: "elsa",
+    name: "elsa2",
     phoneNumber: "098-098-2093",
     email: "elsa@ray.com",
     id: "aelrkgj"
@@ -85,10 +85,10 @@ app.get("/reservation", function(req, res) {
     res.sendFile(path.join(__dirname, "public/reservation.html"));
   });
 
-// // Displays all characters
-// app.get("/api/characters", function(req, res) {
-//   return res.json(characters);
-// });
+// Displays all characters
+app.get("/api/characters", function(req, res) {
+  return res.json(tableCount);
+});
 
 // // Displays a single character, or returns false
 // app.get("/api/characters/:character", function(req, res) {
