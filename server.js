@@ -14,32 +14,33 @@ app.use(express.json());
 
 // table
 // =============================================================
-var tableCount = [
-  {
-    name: "ray",
-    phoneNumber: "098-098-2093",
-    email: "ray@ray.com",
-    id: "1234"
-  },
-  {
-    name: "dima",
-    phoneNumber: "098-098-2093",
-    email: "dima@dima.com",
-    id: "1254"
-  },
-  {
-    name: "gloria",
-    phoneNumber: "098-098-2093",
-    email: "ray@asdfy.com",
-    id: "asdf"
-  },
-  {
-    name: "elsa",
-    phoneNumber: "098-098-2093",
-    email: "elsa@ray.com",
-    id: "aelrkgj"
-  }
-];
+var tableCount = [];
+// var tableCount = [
+//   {
+//     name: "ray",
+//     phoneNumber: "098-098-2093",
+//     email: "ray@ray.com",
+//     id: "1234"
+//   },
+//   {
+//     name: "dima",
+//     phoneNumber: "098-098-2093",
+//     email: "dima@dima.com",
+//     id: "1254"
+//   },
+//   {
+//     name: "gloria",
+//     phoneNumber: "098-098-2093",
+//     email: "ray@asdfy.com",
+//     id: "asdf"
+//   },
+//   {
+//     name: "elsa",
+//     phoneNumber: "098-098-2093",
+//     email: "elsa@ray.com",
+//     id: "aelrkgj"
+//   }
+// ];
 
 // waitlist
 // =============================================================
@@ -90,37 +91,23 @@ app.get("/api/characters", function(req, res) {
   return res.json(tableCount);
 });
 
-// // Displays a single character, or returns false
-// app.get("/api/characters/:character", function(req, res) {
-//   var chosen = req.params.character;
-
-//   console.log(chosen);
-
-//   for (var i = 0; i < characters.length; i++) {
-//     if (chosen === characters[i].routeName) {
-//       return res.json(characters[i]);
-//     }
-//   }
-
-//   return res.json(false);
-// });
 
 // Create New Characters - takes in JSON input
 app.post("/api/waitlist", function(req, res) {
-  // req.body hosts is equal to the JSON post sent from the user
-  // This works because of our body parsing middleware
-  var waitList = [];
+ 
   var newReservation = req.body;
+  if(tableCount.length >= 5){
+    waitCount.push(newReservation);
+    console.log("over");
+  }
+  else{
+    tableCount.push(newReservation);
+    console.log("less");
+  }
 
-  // Using a RegEx Pattern to remove spaces from newCharacter
-  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
-
-  console.log(newReservation);
-
-  waitList.push(newReseravtion);
-
-  res.json(newReservation);
+console.log(tableCount);
+//console.log("wait: " + waitCount);
+res.json(tableCount);
 });
 
 // Starts the server to begin listening
