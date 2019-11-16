@@ -12,9 +12,9 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// reservation
+// table
 // =============================================================
-var characters = [
+var tableCount = [
   {
     name: "ray",
     phoneNumber: "098-098-2093",
@@ -41,6 +41,34 @@ var characters = [
   }
 ];
 
+// waitlist
+// =============================================================
+var waitCount = [
+  {
+    name: "ra2",
+    phoneNumber: "098-098-2093",
+    email: "ray@ray.com",
+    id: "1234"
+  },
+  {
+    name: "dima2",
+    phoneNumber: "098-098-2093",
+    email: "dima@dima.com",
+    id: "1254"
+  },
+  {
+    name: "gloria2",
+    phoneNumber: "098-098-2093",
+    email: "ray@asdfy.com",
+    id: "asdf"
+  },
+  {
+    name: "elsa2",
+    phoneNumber: "098-098-2093",
+    email: "elsa@ray.com",
+    id: "aelrkgj"
+  }
+];
 // Routes
 // =============================================================
 
@@ -57,10 +85,10 @@ app.get("/reservation", function(req, res) {
     res.sendFile(path.join(__dirname, "public/reservation.html"));
   });
 
-// // Displays all characters
-// app.get("/api/characters", function(req, res) {
-//   return res.json(characters);
-// });
+// Displays all characters
+app.get("/api/characters", function(req, res) {
+  return res.json(tableCount);
+});
 
 // // Displays a single character, or returns false
 // app.get("/api/characters/:character", function(req, res) {
@@ -78,20 +106,21 @@ app.get("/reservation", function(req, res) {
 // });
 
 // Create New Characters - takes in JSON input
-app.post("/api/characters", function(req, res) {
+app.post("/api/waitlist", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
-  var newCharacter = req.body;
+  var waitList = [];
+  var newReservation = req.body;
 
   // Using a RegEx Pattern to remove spaces from newCharacter
   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newCharacter.routeName = newCharacter.name.replace(/\s+/g, "").toLowerCase();
+  newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
 
-  console.log(newCharacter);
+  console.log(newReservation);
 
-  characters.push(newCharacter);
+  waitList.push(newReseravtion);
 
-  res.json(newCharacter);
+  res.json(newReservation);
 });
 
 // Starts the server to begin listening
