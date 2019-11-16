@@ -38,23 +38,23 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="name">
                             <label for="exampleFormControlInput1">Name</label>
                             <input type="text" class="form-control">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="phone_number">
                             <label for="exampleFormControlInput1">Phone Number</label>
                             <input type="text" class="form-control">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="email">
                             <label for="exampleFormControlInput1">Email</label>
                             <input type="email" class="form-control">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="uID">
                             <label for="exampleFormControlInput1">Unique ID</label>
                             <input type="text" class="form-control">
                         </div>
-                        <a href="/table.html"><button class="btn btn-danger btn-lg"><span class="fa fa-plus"></span>
+                        <a href="/table.html"><button class="btn btn-danger btn-lg submit"><span></span>
                                 Submit</button></a>
             </form>
         </div>
@@ -66,16 +66,16 @@
             // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
 
             $(".submit").on("click", function () {
-
+                console.log("This is working")
                 // Here we grab the form elements
                 var newReservation = {
-                    name: $('#reserve_name').val().trim(),
-                    phoneNumber: $('#reserve_phone').val().trim(),
-                    email: $('#reserve_email').val().trim(),
-                    iD: $('#reserve_uniqueID').val().trim()
+                    name: $('#name').val().trim(),
+                    phoneNumber: $('#phone_number').val().trim(),
+                    email: $('#email').val().trim(),
+                    iD: $('#uID').val().trim()
                 };
 
-                console.log(newReservation);
+                console.log("this is working");
 
                 // This line is the magic. It's very similar to the standard ajax function we used.
                 // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
@@ -100,10 +100,10 @@
                         }
 
                         // Clear the form when submitting
-                        $('#reserve_name').val("");
-                        $('#reserve_phone').val("");
-                        $('#reserve_email').val("");
-                        $('#reserve_id').val("");
+                        $('#name').val("");
+                        $('#phone_number').val("");
+                        $('#email').val("");
+                        $('#uID').val("");
 
                     });
 
